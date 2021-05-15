@@ -9,7 +9,7 @@
     - Games can have types 
 
 
-### DataBases 
+### Storage 
 - Players 
     - PlayerId 
     - PlayerName 

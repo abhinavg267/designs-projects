@@ -1,0 +1,53 @@
+## Use Cases 
+- Register a book 
+    - Book with different versions will be considered two different books
+    - Book may have multiple copies 
+- Register a user 
+- User can issue a book 
+- Book placement system 
+    - Racks 
+    - Register new Rack 
+    - Capacity 
+    
+## DataBase Storage 
+- Books 
+    - BookId 
+    - Name 
+- Copies 
+    - BookCopyId 
+    - BookId 
+    - RackId
+- User 
+    - UserId 
+    - Name 
+- Rack 
+    - RackId 
+    - Capacity     
+- IssueRecords
+    - UserId 
+    - BookCopyId
+    - IssueActionType 
+        - Borrow 
+        - Return 
+    - SupersededBy 
+    
+## Services 
+- Part1
+    - BookManager 
+        - `addBook(book: Book, quantity: Int)`
+            - quantity can be zero
+        - `addBookCopies(bookId: BookId, quantity: Int)`
+        - `removeBookCopies(bookCopyIds: List[BookCopyId])`
+    - IssueRecordManager
+        - `getAvailableBookCopy(bookId: BookId): Option[BookRecordId]`
+        - `issueOrReturnBookCopy(userId: UserId, bookCopyId: BookCopyId, issueActionType: IssueActionType): Unit`
+        - optional 
+            - `getAllAvailableBookCopies(bookId: BookId): List[BookRecordId]`
+- Part2
+    - StorageManager
+        - `addNewRack(capacity: Int)`
+        - `getAvailableRacks(bookId: BookId, quantity: Int): Map[RackId, Int]`
+        - `placeBookCopies(bookCopyIdAndRackIds: List[(BookCopyId, RackId)])`
+        - `getBookCopyLocations(bookCopyIds: List[BookCopyId]): Map[BookCopyId, RackId]`
+        - optional 
+            - `getNearestBookCopyLocation(bookCopyIds: List[BookCopyId]): Option[RackId]`
