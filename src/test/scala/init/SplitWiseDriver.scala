@@ -1,7 +1,6 @@
 package init
 
-import splitwise.DataBases
-import splitwise.DataBases.{h2DataBase => db}
+import utils.DataBase.{h2DataBase => db}
 import splitwise.Types.Split.{EqualSplit, ExactSplit, PercentageSplit}
 import splitwise.Types.TransactionType.{Borrow, Lend}
 import splitwise.Types.{Price, UserId}
@@ -9,6 +8,7 @@ import splitwise.info.impl.BalanceInfoServiceImpl
 import splitwise.models.{TransactionComponents, Transactions, Users}
 import splitwise.transactions.TransactionManagerImpl
 import slick.jdbc.H2Profile.api._
+import utils.DataBase
 
 import scala.concurrent.Await
 import scala.concurrent.ExecutionContext.Implicits.global
@@ -16,7 +16,7 @@ import scala.concurrent.duration.Duration
 
 object SplitWiseDriver extends App {
   // Initialize Database
-  DataBases
+  DataBase
   Await.result(db.run((Transactions.query.schema ++ TransactionComponents.query.schema ++ Users.query.schema).create), Duration.Inf)
 
   val transactionManagerImpl = new TransactionManagerImpl

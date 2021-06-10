@@ -1,6 +1,6 @@
 package splitwise.info.impl
 
-import splitwise.DataBases.{h2DataBase => db}
+import utils.DataBase.{h2DataBase => db}
 import splitwise.Types.TransactionType.{Borrow, Lend}
 import splitwise.Types.{Price, TransactionType, UserId}
 import splitwise.info.BalanceInfoService

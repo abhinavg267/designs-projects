@@ -3,10 +3,11 @@ package snake_and_ladder
 import snake_and_ladder.models.DataClasses.{Game, Move, Tile, TileConnector}
 
 import scala.annotation.tailrec
+import scala.collection.compat.immutable.ArraySeq
 
 object BoardManager {
-  def prepareABoard(size: Int, tileConnectors: Map[Int, TileConnector]): Array[Tile] = {
-    (0 until size).foldLeft(Array.empty[Tile]) { case (boardYet, newTileIdx) =>
+  def prepareABoard(size: Int, tileConnectors: Map[Int, TileConnector]): ArraySeq[Tile] = {
+    (0 until size).foldLeft(ArraySeq.empty[Tile]) { case (boardYet, newTileIdx) =>
       val tileConnector = tileConnectors.get(newTileIdx)
       boardYet :+ Tile(newTileIdx, tileConnector)
     }

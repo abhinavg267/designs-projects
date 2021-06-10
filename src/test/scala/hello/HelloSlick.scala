@@ -1,14 +1,13 @@
-package init
-
+package hello
 import com.typesafe.config.ConfigFactory
 import slick.basic.DatabaseConfig
 import slick.jdbc.H2Profile.api._
 import slick.jdbc.JdbcProfile
+import slick.lifted.{TableQuery, Tag}
 
 import scala.concurrent.Await
 import scala.concurrent.ExecutionContext.Implicits.global
 import scala.concurrent.duration.Duration
-
 
 object HelloSlick extends App {
   println("Hello Slick!")

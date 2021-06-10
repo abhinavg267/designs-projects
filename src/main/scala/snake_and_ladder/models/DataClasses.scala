@@ -1,7 +1,9 @@
 package snake_and_ladder.models
 
+import scala.collection.compat.immutable.ArraySeq
+
 object DataClasses {
-  case class Game(gameBoard: Array[Tile], players: List[Player],
+  case class Game(gameBoard: ArraySeq[Tile], players: List[Player],
                   moves: List[(Move, Player)], piecesOnBoard: Map[Player, Piece])
 
   case class Move(value: Int) {

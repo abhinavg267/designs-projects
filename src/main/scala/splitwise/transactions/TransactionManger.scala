@@ -1,6 +1,6 @@
 package splitwise.transactions
 
-import splitwise.DataBases.{h2DataBase => db}
+import utils.DataBase.{h2DataBase => db}
 import splitwise.Types._
 import splitwise.models.{Transaction, TransactionComponent, TransactionComponents, Transactions}
 import slick.jdbc.H2Profile.api._
